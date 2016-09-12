@@ -1,6 +1,6 @@
 #Mount Bash#
 
-Mount Bash is an educational game focusing on \*nix terminal usage. It will cover the basics on navigating the file system and system information requests. The user will progress through checkpoints as they answer correctly.
+Mount Bash is an educational game focusing on \*nix terminal usage. It will cover the basics on navigating the file system and system information requests, including many commands used heavily throughout web development. The user will progress through checkpoints as they answer correctly.
 
 ##Functionality & MVP##
 
