@@ -37,7 +37,7 @@ function init() {
 
   function buildBackdrop() {
     let b = new createjs.Shape();
-    b.graphics.beginFill('darkblue').rc(
+    b.graphics.beginFill('#bcd0e5').rc(
       50, 50, wid - 100, hei - 100,
       20, 20, 20, 20
     );
@@ -58,7 +58,7 @@ function init() {
     let bg = new createjs.Shape();
     let temp, text_text, question_text;
 
-    bg.graphics.beginStroke('gray').beginFill('gray').rc(
+    bg.graphics.beginFill('#415326').rc(
       100, 100, wid - 200, 100,
       20, 20, 20, 20
     );
@@ -83,24 +83,25 @@ function init() {
   function addPossibleAnswers() {
     for(var i = 0; i < cQ.a.length; i++) {
      temp = new createjs.Shape();
-     temp.graphics.beginFill('darkred').rc(
-       wid / 2, hei / 3 + (i * 130), wid / 3, hei / 8,
+     temp.graphics.beginFill('#19868f').rc(
+       wid / 2, hei / 4 + (i * 130), wid / 3, hei / 8,
        10, 10, 10, 10
      );
 
      temp_text = new createjs.Text(
-       i + 1 + '   >' + cQ.a[i], '2em Nova Square', 'white'
+       '   >  ' + cQ.a[i], '2em Roboto', 'white'
      );
      temp_text.x = wid / 2 + 50;
-     temp_text.y = hei / 3 + 40 + (i * 130);
+     temp_text.y = hei / 4 + 40 + (i * 130);
 
      //add listeners
      temp.addEventListener('click', validateAnswer);
 
      stage.addChild(temp);
      stage.addChild(temp_text);
-     createjs.Tween.get(temp).to({ x: 10}, 500);
-     createjs.Tween.get(temp_text).to({ x: wid /2 + 40}, 500);
+     temp.alpha = temp_text.alpha = 0;
+     createjs.Tween.get(temp).to({ x: 10, alpha: 1}, 500);
+     createjs.Tween.get(temp_text).to({ alpha: 1, x: wid /2 + 40}, 500);
    }
   }
 
