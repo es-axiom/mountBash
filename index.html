@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-    <script src="blackboard.js"></script>
-  </head>
-  <body onload='init();'>
-    <canvas id='content' height='800' width='1200'>
-    </canvas>
-  </body>
+	<head>
+		<title>Mount Bash</title>
+		<link type='text/css' href='blackboard.scss'/>
+		<link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+		<link rel='stylesheet' href='game_style.scss' />
+		<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+		<script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
+		<script type='text/javascript' src='./question_seed.js'></script>
+		<script type='text/javascript' src='./utilities.js'></script>
+		<script type='text/javascript' src='./game.js'></script>
+	</head>
+	<body onload='init();'>
+		<canvas id='mtbash-game'>
+		</canvas>
+	</body>
 </html>
