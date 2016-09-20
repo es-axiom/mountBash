@@ -63,7 +63,7 @@ function init() {
       20, 20, 20, 20
     );
     question_text = new createjs.Text(
-      cQ.q, '1.8em Sans Serif', 'white'
+      cQ.q, '1.8em Oxygen', 'white'
     );
     question_text.x = 120;
     question_text.y = 130;
@@ -89,7 +89,7 @@ function init() {
      );
 
      temp_text = new createjs.Text(
-       '   >  ' + cQ.a[i], '2em Roboto', 'white'
+       '> ' + cQ.a[i], '2em Space Mono', 'white'
      );
      temp_text.x = wid / 2 + 50;
      temp_text.y = hei / 4 + 40 + (i * 130);
@@ -111,24 +111,82 @@ function init() {
   }
 
   function validateAnswer(e) {
-    console.log(e.nativeEvent.y);
+    let x = e.nativeEvent.x;
     let y = e.nativeEvent.y;
-    if(y > 315 && y < 425) {
+    stage.getObjectUnderPoint(x, y);
+    if(y > 240 && y < 350) {
       ans = 1;
     }
-    if(y > 440 && y < 558) {
+    if(y > 365 && y < 475) {
       ans = 2;
     }
-    if(y > 570 && y < 686) {
+    if(y > 490 && y < 600) {
       ans = 3;
     }
     if(ans - 1 == cQ.c) {
       overallProgress++;
       stage.removeAllChildren();
-      init();
-      return true;
+      answerResponse(true);
+      return;
     }
-    console.log('false');
-    return false;
+    answerResponse(false);
+    return;
+  }
+
+  function answerResponse(bool) {
+    let correctMessage = new createjs.Shape();
+    correctMessage.graphics.f('#415326').rc(
+      wid / 2 - 200, hei / 2 - 200, 400, 200,
+      20, 20, 20, 20
+    );
+    let correctMessageText = null;
+    if(bool) {
+      correctMessageText = new createjs.Text(
+        'Good job!',
+        '38px Oxygen',
+        'White'
+      );
+    } else {
+      correctMessage.graphics.f('darkred').rc(
+        wid / 2 - 200, hei / 2 - 200, 400, 200,
+        20, 20, 20, 20
+      );
+      correctMessage.addEventListener('click', init);
+      correctMessageText = new createjs.Text(
+        'Try again',
+        '38px Oxygen',
+        'White'
+      );
+    }
+    correctMessageText.x = wid / 2 - 100;
+    correctMessageText.y = hei / 2 - 160;
+
+    stage.addChild(correctMessage);
+    stage.addChild(correctMessageText);
+    correctMessage.alpha = correctMessageText.alpha = 0;
+    createjs.Tween.get(correctMessage).to({ alpha: 1}, 300);
+    createjs.Tween.get(correctMessageText).to({ alpha: 1}, 400);
+
+    if(bool) {
+      let nextQuestion = new createjs.Shape();
+      // triangle util vars >
+      let tx = wid / 2;
+      let ty = hei / 2 + 180;
+      nextQuestion.graphics.f('#19868f').rc(
+        wid / 2, hei / 2 - 40, 200, 80,
+        10, 10, 10, 10
+      );
+      nextQuestion.addEventListener('click', init);
+
+      let nextQuestionText = new createjs.Text('Next', '30px Oxygen', 'white');
+      nextQuestionText.x = wid / 2 + 20;
+      nextQuestionText.y = hei / 2 - 20;
+
+      stage.addChild(nextQuestion);
+      stage.addChild(nextQuestionText);
+      nextQuestion.alpha = nextQuestionText.alpha = 0;
+      createjs.Tween.get(nextQuestion).to({alpha: 1}, 200);
+      createjs.Tween.get(nextQuestionText).to({alpha: 1}, 200);
+    }
   }
 }
