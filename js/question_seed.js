@@ -5,7 +5,7 @@ questions = [
         'a': ['cd', 'dc', 'cdir'],
         'c': 0,
         'example': {
-          't': 'This will be the example text',
+          't': "> This will be the example text </br>> This is a second line.",
           'link': '#'
         }
       },

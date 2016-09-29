@@ -68,10 +68,12 @@ html, body {
   border: 2px solid white;
 }
 
-#quizlet .example-text {
+#quizlet .example-terminal .example-text {
   color: white;
   font-size: 20px;
   font-family: 'Space-Mono';
+  text-align: left;
+  padding: 20px;
 }
 
 .greeting-message {
