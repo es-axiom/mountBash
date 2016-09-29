@@ -2,16 +2,33 @@
 <html>
 	<head>
 		<title>Mount Bash</title>
-		<link type='text/css' href='blackboard.scss'/>
 		<link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Oxygen|Space+Mono" rel="stylesheet">
-		<link rel='stylesheet' href='./css/game_style.scss' />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<link rel='stylesheet' href='./css/doc-and-header-style.css' />
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type='text/javascript' src='./js/question_logic.js'></script>
+		<script type='text/javascript' src='./js/greeting_page.js'></script>
+		<script type='text/javascript' src='./jQuery/add_question.js'></script>
+		<script type='text/javascript' src='./jQuery/add_info.js'></script>
+		<script type='text/javascript' src='./jQuery/master.js'></script>
 		<script type='text/javascript' src='./js/question_seed.js'></script>
-		<script type='text/javascript' src='./js/game.js'></script>
+		<script type='text/javascript' src='./js/progress_bar.js'></script>
+		<script type='text/javascript' src='./js/entry.js'></script>
 	</head>
-	<body onload='init();'>
-		<canvas id='mtbash-game'>
-		</canvas>
+	<body id='overlord' onload='init();'>
+		<header class='app-bar'>
+			<h3 class='game-title'>Mt Bash</h3>
+			<ul class='header-list'>
+				<li class='notification'></li>
+				<li onClick='init();'>Restart</li>
+				<li>Extra Docs</li>
+			</ul>
+		</header>
+		<div class='app'>
+			<section id="quizlet">
+			</section>
+		</div>
+
+
 	</body>
 </html>
