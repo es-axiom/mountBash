@@ -1,8 +1,6 @@
-let progress = 0;
-
 function handleNameSubmit() {
   $('#quizlet').empty();
-  $('#game-title').html = name;
+  $('#game-title').text(name);
   progress += 1;
 
   addQuestion();

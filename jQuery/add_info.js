@@ -1,5 +1,7 @@
 function addInformationPage() {
-  createExample();
+  if($('aside').length == 0) {
+    createExample();
+  }
 }
 
 function createExample() {

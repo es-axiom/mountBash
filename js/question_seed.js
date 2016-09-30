@@ -2,7 +2,7 @@ questions = [
     {
       1: {
         'q': 'What is the command used to change directory?',
-        'a': ['cd', 'dc', 'cdir'],
+        'a': ['cd', 'dc', 'cdir', 'dir_c', 'c_d'],
         'c': 0,
         'example': {
           't': "> This will be the example text </br>> This is a second line.",
