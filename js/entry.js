@@ -7,6 +7,12 @@ function init() {
   mountBash.start();
 }
 
+function restart() {
+  progress = 0;
+  quizlet.empty();
+  console.log('here');
+}
+
 let mountBash = {
   start: () => {
     mountBash.progress = 0;

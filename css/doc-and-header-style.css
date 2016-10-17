@@ -71,7 +71,7 @@ html, body {
 #quizlet .example-terminal .example-text {
   color: white;
   font-size: 1.6em;
-  font-family: 'Space-Mono';
+  font-family: 'Space Mono';
   text-align: left;
   padding: 20px;
 }
@@ -90,7 +90,7 @@ html, body {
   height: 30%;
   background-color: black;
   border: 2px solid #d41137;
-  width: 100%;
+  width: calc(100% - 4px);
   color: #d41137;
   font-size: 32px;
   font-weight: 700;

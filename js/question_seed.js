@@ -5,17 +5,26 @@ questions = [
         'a': ['cd', 'dc', 'cdir', 'dir_c', 'c_d'],
         'c': 0,
         'example': {
-          't': "> This will be the example text </br>> This is a second line.",
-          'link': '#'
+          't': [`[ cd ] Changing Directory`,
+          `While navigating the file system in a terminal, you will use cd often`,
+          `ex:`,
+          `> cd ~/Desktop`,
+          `This will navigate the terminal to the Desktop folder located in the ~ (home) directory`].join('</br>'),
+          'link': 'http://guides.macrumors.com/cd'
         }
       },
       2: {
-        'q': "What command lists the contents of a file - 'text'?",
-        'a': ['cat /text', 'ls /text', 'list text'],
+        'q': "What command outputs the contents of a file - 'text' in the terminal?",
+        'a': ['cat text.txt', 'ls text.txt', 'list text.txt', 'show text.txt'],
         'c': 1,
         'example': {
-          't': 'This will be the example text',
-          'link': '#'
+          't': [`[ cat ] Concatenate`,
+           `If you wish to view the raw text of a file you can output the content with 'cat'`,
+           `ex:`,
+           `> cat ~/Desktop/my_text_file.txt`,
+           `This will dump the contents of the file into the terminal as shown`,
+           `>`].join('</br>'),
+           'link': ''
         }
       },
       3: {
