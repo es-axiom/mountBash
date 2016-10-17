@@ -1,5 +1,7 @@
+let DISP = window;
 let quizlet;
 let name;
+let progress;
 
 $(document).ready(() => {
   quizlet = $('#quizlet');
@@ -19,8 +21,8 @@ function addNameInput() {
   nameInput.attr({
     type: 'text'
   });
-  nameInput.submit( () => {
-    handleNameSubmit();
+  nameInput.submit( (e) => {
+    handleNameSubmit(e.currentTarget.value);
   });
   nameInput.keypress((e) => {
     if(e.which == 13) {

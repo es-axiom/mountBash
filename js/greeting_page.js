@@ -1,6 +1,7 @@
-function handleNameSubmit() {
+function handleNameSubmit(name) {
   $('#quizlet').empty();
   $('#game-title').text(name);
-  progress++;
-  addQuestion();
+  DISP.pg = 1;
+  DISP.nm = name;
+  let master_q = new Question();
 }

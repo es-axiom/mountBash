@@ -1,33 +1,34 @@
-let response;
-
 class Question {
   constructor() {
     this.quizlet = quizlet;
-    this.response = nil;
+    this.response = null;
+    this.progress = DISP.pg;
+    this.addQuestion();
   }
 
   addQuestion() {
     this.addQuery();
     this.addOpts();
-    this.addProgressBar();
+    addProgressBar();
   }
 
   addQuery() {
     let query = $('<h2>').addClass('query-text');
-    query.html(questions[0][progress].q);
+    debugger
+    query.html(questions[0][this.progress].q);
     this.quizlet.append(query);
   }
   addOpts() {
     let optField = $('<ul>').addClass('opt-field');
-    let answers = questions[0][progress].a;
-    let correct_answer = questions[0][progress].c;
+    let answers = questions[0][this.progress].a;
+    let correct_answer = questions[0][this.progress].c;
     for (let i in answers) {
       let opt = $('<li>').addClass('opt-bar');
       opt.html(answers[i]);
       opt.val(i);
       opt.click((e) => {
         this.response = e.currentTarget.value;
-        animateSelection(opt, correct_answer);
+        this.animateSelection(opt, correct_answer);
       });
       optField.append(opt);
     }
@@ -42,19 +43,21 @@ class Question {
     opt.animate({
       opacity: 0.5,
       fontSize: '2em'
-    }, 200, checkAnswer.bind(this, opt, c));
+    }, 200, this.checkAnswer.bind(this, opt, c));
   }
+
   checkAnswer(opt, c) {
     if(this.response == c) {
-      progress += 1;
+      this.progress += 1;
       this.quizlet.empty();
-      addQuestion();
+      DISP.pg = this.progress;
+      this.addQuestion();
     } else {
       opt.animate({
         opacity: 0.1
       }, 200);
 
-      addInformationPage();
+      this.addInformationPage();
     }
   }
 }
