@@ -2,19 +2,22 @@ class Question {
   constructor() {
     this.quizlet = quizlet;
     this.response = null;
-    this.progress = DISP.pg;
+    this.progress = 1;
+    if(localStorage.pg > 0) {
+      this.progress = parseInt(localStorage.pg);
+    }
+    this.terminalAdded = false;
     this.addQuestion();
   }
 
   addQuestion() {
     this.addQuery();
     this.addOpts();
-    addProgressBar();
+    let progressBar = new Progressbar(this.progress);
   }
 
   addQuery() {
     let query = $('<h2>').addClass('query-text');
-    debugger
     query.html(questions[0][this.progress].q);
     this.quizlet.append(query);
   }
@@ -49,15 +52,17 @@ class Question {
   checkAnswer(opt, c) {
     if(this.response == c) {
       this.progress += 1;
+      localStorage.setItem('pg', this.progress);
       this.quizlet.empty();
-      DISP.pg = this.progress;
       this.addQuestion();
     } else {
       opt.animate({
         opacity: 0.1
       }, 200);
-
-      this.addInformationPage();
+      if(!this.terminalAdded) {
+        let terminal = new InformationPanel(this.progress);
+        this.terminalAdded = true;
+      }
     }
   }
 }
