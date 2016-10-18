@@ -55,6 +55,7 @@ class Question {
       localStorage.setItem('pg', this.progress);
       this.quizlet.empty();
       this.addQuestion();
+      this.terminalAdded = false;
     } else {
       opt.animate({
         opacity: 0.1
