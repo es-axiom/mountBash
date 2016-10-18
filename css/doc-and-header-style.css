@@ -56,10 +56,11 @@ html, body {
 
 #quizlet .opt-field li {
   min-height: 80px;
-  font-size: 1.6em;
+  font-size: 1.4em;
   line-height: 80px;
+  margin: 10px 0;
   background-color: #ccc;
-  border-radius: 5%;
+  border-radius: 3%;
   font-weight: 700;
   font-family: 'Space-Mono';
   border: 5px solid gray;

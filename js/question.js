@@ -7,6 +7,8 @@ class Question {
       this.progress = parseInt(localStorage.pg);
     }
     this.terminalAdded = false;
+    this.answers = questions[0][this.progress].a;
+    this.correct_answer = questions[0][this.progress].c;
     this.addQuestion();
   }
 
@@ -21,19 +23,31 @@ class Question {
     query.html(questions[0][this.progress].q);
     this.quizlet.append(query);
   }
+
+
+  newOpt(i) {
+    let optField = $('<ul>').addClass('opt-field');
+    let opt = $('<li>').addClass('opt-bar');
+    opt.html(this.answers[i]);
+    opt.val(i);
+    opt.click((e) => {
+      this.response = e.currentTarget.value;
+      this.animateSelection(opt, this.correct_answer);
+    });
+    optField.append(opt);
+    return optField;
+  }
+
+  addOpt() {
+    let opt = this.newOpt(this.response);
+    opt.css('background-color', '#990000');
+    this.quizlet.append(opt);
+  }
+
   addOpts() {
     let optField = $('<ul>').addClass('opt-field');
-    let answers = questions[0][this.progress].a;
-    let correct_answer = questions[0][this.progress].c;
-    for (let i in answers) {
-      let opt = $('<li>').addClass('opt-bar');
-      opt.html(answers[i]);
-      opt.val(i);
-      opt.click((e) => {
-        this.response = e.currentTarget.value;
-        this.animateSelection(opt, correct_answer);
-      });
-      optField.append(opt);
+    for (let i in this.answers) {
+      optField.append(this.newOpt(i));
     }
     this.quizlet.append(optField);
   }
@@ -45,25 +59,36 @@ class Question {
     }, 50);
     opt.animate({
       opacity: 0.5,
-      fontSize: '2em'
+      fontSize: '2em',
     }, 200, this.checkAnswer.bind(this, opt, c));
   }
 
   checkAnswer(opt, c) {
     if(this.response == c) {
-      this.progress += 1;
-      localStorage.setItem('pg', this.progress);
-      this.quizlet.empty();
-      this.addQuestion();
-      this.terminalAdded = false;
+      this.respondToTrue();
     } else {
       opt.animate({
         opacity: 0.1
       }, 200);
       if(!this.terminalAdded) {
-        let terminal = new InformationPanel(this.progress);
-        this.terminalAdded = true;
+        this.respondToFalse(opt);
       }
     }
+  }
+
+  respondToTrue() {
+    this.progress += 1;
+    localStorage.setItem('pg', this.progress);
+    this.quizlet.empty();
+    this.addQuestion();
+    this.terminalAdded = false;
+  }
+
+  respondToFalse(opt) {
+    this.quizlet.empty();
+    this.addQuery();
+    this.addOpt();
+    let terminal = new InformationPanel(this.progress);
+    this.terminalAdded = true;
   }
 }
