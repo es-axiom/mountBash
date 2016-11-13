@@ -45,7 +45,7 @@ class Question {
   }
 
   addOpts() {
-    let optField = $('<ul>').addClass('opt-field');
+    let optField = $('<ul>').addClass('opt-container');
     for (let i in this.answers) {
       optField.append(this.newOpt(i));
     }

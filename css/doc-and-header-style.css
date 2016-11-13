@@ -17,6 +17,14 @@ html, body {
   font-family: sans-serif;
 }
 
+ul {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+}
+
 #overlord {
   display: flex;
   flex-direction: column;
@@ -28,6 +36,9 @@ html, body {
   background-color: var(--bg-color);
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #quizlet h2 {
@@ -39,15 +50,18 @@ html, body {
   text-align: center;
 }
 
-#quizlet .opt-field {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+ul.opt-container {
   width: 90%;
   margin: auto;
-  padding: 1.6em;
   text-align: center;
-  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+#quizlet .opt-field {
+  padding: 15px;
+  list-style: none;
 }
 
 #quizlet .opt-field li::before {
@@ -55,9 +69,8 @@ html, body {
 }
 
 #quizlet .opt-field li {
-  min-height: 80px;
   font-size: 1.4em;
-  line-height: 80px;
+  line-height: 60px;
   margin: 10px 0;
   background-color: #ccc;
   border-radius: 3%;

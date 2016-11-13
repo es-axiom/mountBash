@@ -14,6 +14,9 @@ class InformationPanel {
     this.example_text.html(questions[0][this.progress].example.t);
     this.example_link = questions[0][this.progress].example.link;
     this.example.append(this.example_text);
+    this.example.on('click', () => {
+      restart(this.progress);
+    });
     quizlet.append(this.example);
   }
 }

@@ -32,7 +32,14 @@ questions = [
         'a': ['move', 'me', 'mv'],
         'c': 2,
         'example': {
-          't': 'This will be the example text',
+          't': [`[ mv ] Move/Rename`,
+          `If you want to rename a file or folder OR move it you can do so with 'mv'`,
+          `ex:`,
+          `> mv my_file.txt new_name.txt`,
+          `'my_file.txt' is renamed to 'new_name.txt' using this command above`,
+          `> mv my_file.txt ~/Dev`,
+          `'my_file.txt' is moved to a new directory: '~/Dev'`
+          ].join('</br'),
           'link': '#'
         }
       },
@@ -43,7 +50,7 @@ questions = [
               'ctrl+q'],
         'c': 0,
         'example': {
-          't': 'This will be the example text',
+          't': [],
           'link': '#'
         }
       },

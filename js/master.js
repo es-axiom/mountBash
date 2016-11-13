@@ -16,8 +16,8 @@ function setUpGame() {
   }
 }
 
-function restart() {
-  localStorage.pg = 0;
+function restart(pg) {
+  localStorage.pg = pg || 0;
   quizlet.empty();
   setUpGame();
 }
