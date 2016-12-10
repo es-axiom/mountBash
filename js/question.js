@@ -7,13 +7,17 @@ class Question {
       this.progress = parseInt(localStorage.pg);
     }
     this.terminalAdded = false;
-    this.answers = questions[0][this.progress].a;
+    this.setAnswers();
     this.correct_answer = questions[0][this.progress].c;
     this.addQuestion();
   }
 
+  setAnswers() {
+    this.answers = questions[0][this.progress].a;
+  }
   addQuestion() {
     this.addQuery();
+    this.setAnswers();
     this.addOpts();
     let progressBar = new Progressbar(this.progress);
   }
@@ -22,20 +26,6 @@ class Question {
     let query = $('<h2>').addClass('query-text');
     query.html(questions[0][this.progress].q);
     this.quizlet.append(query);
-  }
-
-
-  newOpt(i) {
-    let optField = $('<ul>').addClass('opt-field');
-    let opt = $('<li>').addClass('opt-bar');
-    opt.html(this.answers[i]);
-    opt.val(i);
-    opt.click((e) => {
-      this.response = e.currentTarget.value;
-      this.animateSelection(opt, this.correct_answer);
-    });
-    optField.append(opt);
-    return optField;
   }
 
   addOpt() {
@@ -50,6 +40,19 @@ class Question {
       optField.append(this.newOpt(i));
     }
     this.quizlet.append(optField);
+  }
+
+  newOpt(i) {
+    let optField = $('<ul>').addClass('opt-field');
+    let opt = $('<li>').addClass('opt-bar');
+    opt.html(this.answers[i]);
+    opt.val(i);
+    opt.click((e) => {
+      this.response = e.currentTarget.value;
+      this.animateSelection(opt, this.correct_answer);
+    });
+    optField.append(opt);
+    return optField;
   }
 
   animateSelection(opt, c) {

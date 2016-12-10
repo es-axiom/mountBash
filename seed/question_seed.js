@@ -44,7 +44,7 @@ questions = [
         }
       },
       4: {
-        'q': 'What keyboard shortcut generally quits a program?',
+        'q': 'What keyboard shortcut generally quits a program? [MAC]',
         'a': ['cmd+q',
               'ctrl+w',
               'ctrl+q'],
