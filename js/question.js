@@ -15,6 +15,7 @@ class Question {
   setAnswers() {
     this.answers = questions[0][this.progress].a;
   }
+
   addQuestion() {
     this.addQuery();
     this.setAnswers();

@@ -15,6 +15,7 @@ class Greeting {
 
   addNameInput() {
     this.nameInput.attr('type', 'text');
+    this.nameInput.attr('placeholder', 'Type name and hit <enter>')
     this.nameInput.submit( (e) => {
       this.handleNameSubmit(e.currentTarget.value);
       let master_q = new Question();

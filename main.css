@@ -64,11 +64,14 @@ body {
   font-weight: 700;
   font-family: sans-serif; }
   .app-bar .game-title {
+    cursor: auto;
     color: white;
     font-family: sans-serif;
     font-size: 24px;
     text-align: center;
-    padding-left: 40px; }
+    padding-left: 40px;
+    cursor: default;
+    padding-right: 20px; }
   .app-bar .header-list {
     height: 100%;
     display: flex;
@@ -86,7 +89,8 @@ body {
       padding: 0 20px; }
       .app-bar .header-list li:hover {
         background-color: white;
-        color: #01587a; }
+        color: #01587a;
+        cursor: pointer; }
 
 .app {
   width: 100%;
@@ -122,23 +126,24 @@ body {
       font-weight: 700;
       text-align: center; }
     .app #quizlet .query-text {
-      padding: 60px;
       width: 100%;
       font-size: 2em;
       background-color: var(--accent-color);
-      margin: auto;
-      text-align: center; }
+      text-align: center;
+      padding: 60px 0; }
     .app #quizlet .opt-container {
       width: 90%;
       margin: auto;
-      text-align: center;
       display: flex;
-      justify-content: space-around;
-      flex-direction: column; }
+      flex-direction: column;
+      justify-content: flex-start; }
       .app #quizlet .opt-container .opt-field {
-        padding: 15px;
-        list-style: none; }
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; }
         .app #quizlet .opt-container .opt-field li {
+          width: auto;
           font-size: 1.4em;
           line-height: 60px;
           margin: 10px 0;
@@ -148,6 +153,7 @@ body {
           font-family: 'Space-Mono';
           border: 5px solid gray; }
           .app #quizlet .opt-container .opt-field li::before {
+            padding: 30px;
             content: "> "; }
     .app #quizlet .progress-bar {
       width: 100%;
