@@ -1,6 +1,5 @@
 class Question {
   constructor() {
-    location.reload(); //reloads to load name
     this.quizlet = quizlet;
     this.response = null;
     this.progress = 1;
